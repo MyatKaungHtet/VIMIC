@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="scotchApp">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>VULPES INNOVATIVE MYANMAR INVESTMENT COMPANY</title>
+    
+    <!-- custom css -->
+    <link rel="stylesheet" type="text/css" href="css/custom.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Zilla+Slab" rel="stylesheet">
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-scroll/1.0.2/angular-scroll.js"></script>
+    <!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script> -->
+    <script src="js/angular-script.js"></script>
+
+    
+</head>
+
+<body id="top">
+
+<div class="container">
+    <img class="logo" src="img/logo.png" alt="logo">
+    <h3>Vulpes Innovative Myanmar Investment Company</h3>
+    <div class="quote"><blockquote>"An investment in knowledge pays the best interest."</blockquote></div>
+    <div id="sticker" class="menu">
+        <ul>
+            <li><a ng-click="gotoElement('business')" href="#business?scrollTo=business">our business</a></li>
+            <li><a href="#team?scrollTo=team">our team</a></li>
+            <li><a href="#portfolio?scrollTo=portfolio">portfolio</a></li>
+            <li><a href="#investor?scrollTo=investor">investors</a></li>
+            <li><a href="#contact?scrollTo=contact">contact</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="container-2" style="background: #fff;">
+   
+
+
+    <div ng-controller="mainController">
+
+    <div id="main">
+  
+    <!-- angular templating -->
+        <!-- this is where content will be injected -->
+    <div ng-view></div>
+    {{scrollTo}}
+
+    </div>
+  
+    <footer>Copyright © Vulpes Innovative Myanmar Investment Company 2017</footer>
+</div>
+   
+</div>
+
+
+    <!-- jquery -->
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+
+    <script type="text/javascript">
+     $("a").click(function() { 
+      $(this).dblclick(); 
+    });
+
+    </script>
+    <script src="js/jquery.backstretch.js"></script>
+
+
+    <script type="text/javascript">
+
+
+
+        // Create a clone of the menu, right next to original.
+$('.menu').addClass('original').clone().insertAfter('.menu').addClass('cloned').css('position','fixed').css('top','0').css('padding-top','25px').css('margin-bottom','10px').css('z-index','500').css('height','28px').css('width','100%').css('font-size','18px').css('border-bottom','2px solid #ec9000').css('background','rgba(255,255,255,1)').css('margin-right','0').removeClass('original').hide();
+
+
+scrollIntervalID = setInterval(stickIt, 10);
+
+
+function stickIt() {
+
+  var orgElementPos = $('.original').offset();
+  orgElementTop = orgElementPos.top;               
+
+  if ($(window).scrollTop() >= (orgElementTop)) {
+    // scrolled past the original position; now only show the cloned, sticky element.
+
+    // Cloned element should always have same left position and width as original element.     
+    orgElement = $('.original');
+    coordsOrgElement = orgElement.offset();
+    leftOrgElement = coordsOrgElement.left;  
+    widthOrgElement = orgElement.css('width');
+    $('.cloned').slideDown();
+    $('.original').css('visibility','hidden');
+  } else {
+    // not scrolled past the menu; only show the original menu.
+    $('.cloned').hide();
+    $('.original').css('visibility','visible');
+  }
+}
+    </script>
+
+
+
+    <script>
+        $.backstretch([
+          "img/background.png",
+          "img/background-1.jpg",
+          "img/background-2.png"
+        ], {
+            fade: 750,
+            duration: 1500
+        });
+    </script>
+
+    <script type="text/javascript">
+        
+        // Select all links with hashes
+$('a[href*="#"]')
+  // Remove links that don't actually link to anything
+  .not('[href="#"]')
+  .not('[href="#0"]')
+  .click(function(event) {
+    // On-page links
+    if (
+      location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') 
+      && 
+      location.hostname == this.hostname
+    ) {
+      // Figure out element to scroll to
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+      // Does a scroll target exist?
+      if (target.length) {
+        // Only prevent default if animation is actually gonna happen
+        event.preventDefault();
+        $('html, body').animate({
+          scrollTop: target.offset().top
+        }, 2000, function() {
+          
+        });
+      }
+    }
+  });
+    </script>
+
+  
+    
+</body>
+
+</html>
